@@ -1,3 +1,5 @@
+Forked from https://github.com/Zren/atom-a-package-loader
+
 # A Package Loader
 
 A simple package loader to attempt to load slow packages in the background.

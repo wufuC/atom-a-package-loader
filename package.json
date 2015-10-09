@@ -3,7 +3,7 @@
   "main": "./lib/main",
   "version": "1.0.0",
   "description": "Package loading scheduler that load slow packages in the background.",
-  "repository": "https://github.com/zren/atom-a-package-loader",
+  "repository": "https://github.com/wufuC/atom-a-package-loader",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0"
