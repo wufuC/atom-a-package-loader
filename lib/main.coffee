@@ -65,7 +65,7 @@ for packagePath in packagePaths
   continue if atom.packages.isPackageDisabled(packageName)
 
   console.log 'packageLoader.defer: ', packageName
-  Package ?= require(atom.packages.resourcePath + '\\src\\package')
+  Package ?= require(atom.packages.resourcePath + '//src//package')
   # packageName = 'tree-view'
   # packagePath = 'c:\\Atom\\Atom 0.106.0-88df4d2\\resources\\app\\node_modules\\tree-view'
   packageMetadata = {
@@ -130,24 +130,25 @@ module.exports =
       measureEnd 'packageLoader.addSlowLoadingPackages'
     cb() if cb
 
-  getStatusBarElement: ->
-    atom.workspaceView.statusBar.find('.a-package-loader-status')
+  # getStatusBarElement: ->
+  #   atom.workspaceView.statusBar.find('.a-package-loader-status')
 
-  setStatusBarMsg: (msg) ->
-    el = @getStatusBarElement()
-    unless el and el.length > 0
-      console.log 'statusBar'
-      atom.workspaceView.statusBar.appendLeft('<div class="a-package-loader-status inline-block"></div>')
-    atom.workspaceView.statusBar.find('.a-package-loader-status').text(msg)
+  # setStatusBarMsg: (msg) ->
+  #   el = @getStatusBarElement()
+  #   unless el and el.length > 0
+  #     console.log 'statusBar'
+  #     atom.workspaceView.statusBar.appendLeft('<div class="a-package-loader-status inline-block"></div>')
+  #   atom.workspaceView.statusBar.find('.a-package-loader-status').text(msg)
 
-  removeStatusBarMsg: ->
-    cb = ->
-      @remove()
-    atom.workspaceView.statusBar.find('.a-package-loader-status').fadeOut('fast', cb)
+  # removeStatusBarMsg: ->
+  #   cb = ->
+  #     @remove()
+  #   atom.workspaceView.statusBar.find('.a-package-loader-status').fadeOut('fast', cb)
 
   onWindowLoaded: ->
     measureStart 'packageLoader.onWindowLoaded'
-    @setStatusBarMsg('Loading Packages...')
+    # @setStatusBarMsg('Loading Packages...')
+    console.log ('Loading packages...')
 
     async ?= require 'async'
     async.series([
@@ -161,9 +162,10 @@ module.exports =
 
       msg = 'Loaded in: ' + @times.totalLoadTime + 'ms (Background: ' + @times.deferredPackagesLoadTime + 'ms | Waited: ' + @times.waited + 'ms)'
       console.log msg
-      @setStatusBarMsg(msg)
+    #   @setStatusBarMsg(msg)
       cb = =>
-        @removeStatusBarMsg()
+          console.log ('Finished loading packages')
+    #     @removeStatusBarMsg()
       setTimeout cb, 5000
     )
 
