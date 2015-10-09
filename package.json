@@ -2,11 +2,11 @@
   "name": "a-package-loader",
   "main": "./lib/main",
   "version": "1.0.0",
-  "description": "A short description of your package",
+  "description": "Package loading scheduler that load slow packages in the background.",
   "repository": "https://github.com/zren/atom-a-package-loader",
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">=1.0.0"
   },
   "dependencies": {}
 }
